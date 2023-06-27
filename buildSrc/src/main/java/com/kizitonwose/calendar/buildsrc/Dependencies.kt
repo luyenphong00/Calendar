@@ -22,7 +22,7 @@ object Android {
 }
 
 object Plugins {
-    const val android = "com.android.tools.build:gradle:7.4.2"
+    const val android = "com.android.tools.build:gradle:7.2.2"
     const val kotlin = Kotlin.gradlePlugin
     const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:3.13.0"
     const val versions = "com.github.ben-manes:gradle-versions-plugin:0.46.0"
@@ -37,7 +37,7 @@ object Kotlin {
 
 object Libs {
     object Core {
-        const val deSugar = "com.android.tools:desugar_jdk_libs:2.0.2"
+        const val deSugar = "com.android.tools:desugar_jdk_libs:1.1.5"
 
         object Test {
             const val junit = "junit:junit:4.13.2"

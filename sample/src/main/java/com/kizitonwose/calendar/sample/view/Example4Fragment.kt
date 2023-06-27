@@ -42,11 +42,11 @@ class Example4Fragment : BaseFragment(R.layout.example_4_fragment), HasToolbar, 
 
     override val titleRes: Int? = null
 
-    private val today = LocalDate.now()
+    private var today : LocalDate? = null
 
     private var selection = DateSelection()
 
-    private val headerDateFormatter = DateTimeFormatter.ofPattern("EEE'\n'd MMM")
+    private var headerDateFormatter : DateTimeFormatter? = null
 
     private lateinit var binding: Example4FragmentBinding
 
@@ -55,6 +55,8 @@ class Example4Fragment : BaseFragment(R.layout.example_4_fragment), HasToolbar, 
         addStatusBarColorUpdate(R.color.white)
         setHasOptionsMenu(true)
         binding = Example4FragmentBinding.bind(view)
+        today = LocalDate.now()
+        headerDateFormatter = DateTimeFormatter.ofPattern("EEE'\n'd MMM")
         // Set the First day of week depending on Locale
         val daysOfWeek = daysOfWeek()
         binding.legendLayout.root.children.forEachIndexed { index, child ->
@@ -89,7 +91,7 @@ class Example4Fragment : BaseFragment(R.layout.example_4_fragment), HasToolbar, 
     private fun bindSummaryViews() {
         binding.exFourStartDateText.apply {
             if (selection.startDate != null) {
-                text = headerDateFormatter.format(selection.startDate)
+                text = headerDateFormatter?.format(selection.startDate)
                 setTextColorRes(R.color.example_4_grey)
             } else {
                 text = getString(R.string.start_date)
@@ -99,7 +101,7 @@ class Example4Fragment : BaseFragment(R.layout.example_4_fragment), HasToolbar, 
 
         binding.exFourEndDateText.apply {
             if (selection.endDate != null) {
-                text = headerDateFormatter.format(selection.endDate)
+                text = headerDateFormatter?.format(selection.endDate)
                 setTextColorRes(R.color.example_4_grey)
             } else {
                 text = getString(R.string.end_date)
